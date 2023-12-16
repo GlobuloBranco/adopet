@@ -2,7 +2,7 @@ import { useState } from "react";
 import Logo from "../assets/adopet-logo-site.png";
 import { useNavigate } from "react-router-dom";
 
-export default function Signup() {
+export default function SignupOng() {
   const navigate = useNavigate();
   return (
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
@@ -11,7 +11,7 @@ export default function Signup() {
         <div className="grid grid-cols-2 gap-12 my-6">
           <div className="flex flex-col text-xl">
             <label htmlFor="name" className="font-semibold">
-              Nome
+              Nome da instituição
             </label>
             <input
               type="text"
@@ -21,8 +21,30 @@ export default function Signup() {
             />
           </div>
           <div className="flex flex-col text-xl">
+            <label htmlFor="name" className="font-semibold">
+              Nome do diretor
+            </label>
+            <input
+              type="text"
+              name=""
+              id="name"
+              className="p-2 text-xl border w-80 border-neutral-300"
+            />
+          </div>
+          <div className="flex flex-col text-xl">
+            <label htmlFor="cnpj" className="font-semibold">
+              CNPJ
+            </label>
+            <input
+              type="text"
+              name=""
+              id="cnpj"
+              className="p-2 text-xl border border-neutral-300"
+            />
+          </div>
+          <div className="flex flex-col text-xl">
             <label htmlFor="cpf" className="font-semibold">
-              CPF
+              CPF do diretor
             </label>
             <input
               type="text"
@@ -32,24 +54,24 @@ export default function Signup() {
             />
           </div>
           <div className="flex flex-col text-xl">
-            <label htmlFor="data" className="font-semibold">
-              Data de nasc.
-            </label>
-            <input
-              type="date"
-              name=""
-              id="data"
-              className="p-2 text-xl border border-neutral-300"
-            />
-          </div>
-          <div className="flex flex-col text-xl">
             <label htmlFor="email" className="font-semibold">
-              Email
+              Email da instituição
             </label>
             <input
               type="email"
               name=""
               id="email"
+              className="p-2 text-xl border border-neutral-300"
+            />
+          </div>
+          <div className="flex flex-col text-xl">
+            <label htmlFor="tel" className="font-semibold">
+              Telefone
+            </label>
+            <input
+              type="text"
+              name=""
+              id="tel"
               className="p-2 text-xl border border-neutral-300"
             />
           </div>
@@ -91,9 +113,9 @@ export default function Signup() {
             </button>
           </span>
           <span className="mt-2 text-base">
-            Possui uma ong?{" "}
+            Deseja cadastrar como tutor?{" "}
             <button
-              onClick={() => navigate("/signup/ong")}
+              onClick={() => navigate("/signup")}
               className="text-green-800 hover:underline">
               Cadastre aqui
             </button>

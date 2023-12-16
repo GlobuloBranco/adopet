@@ -19,7 +19,7 @@ export default function Home() {
                   <img
                     src={Gato}
                     alt=""
-                    className="w-full h-[200px] rounded-t-lg"
+                    className="w-full h-[250px] rounded-t-lg"
                   />
                   <h1 className="text-2xl font-bold">Maggie</h1>
                   <span>Raça: gato</span>

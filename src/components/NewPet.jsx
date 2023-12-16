@@ -7,10 +7,13 @@ import { useState } from "react";
 export default function NewPet({ setNewPet }) {
   const [gender, setGender] = useState("");
   return (
-    <div className="fixed flex items-center justify-center w-full min-h-screen bg-[rgba(0,0,0,0.11)]">
+    <div className="fixed flex items-center justify-center w-full min-h-screen bg-[rgba(0,0,0,0.2)]">
       <div className="relative px-20 py-10 bg-white rounded-lg animate-zoomIn">
         <button
-          onClick={() => setNewPet(false)}
+          onClick={() => {
+            setNewPet(false);
+            document.body.style.overflow = "visible";
+          }}
           className="absolute right-2 top-2">
           <IoCloseOutline size={40} />
         </button>
