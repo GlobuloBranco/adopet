@@ -15,14 +15,18 @@ export default function Home() {
             {Array(15)
               .fill("")
               .map((e) => (
-                <div className="flex flex-col items-center gap-3 px-12 py-6 text-xl bg-white rounded-lg shadow-xl">
-                  <img src={Gato} alt="" width={200} />
+                <div className="flex flex-col items-center gap-3 pb-6 text-xl bg-white rounded-lg shadow-xl w-72">
+                  <img
+                    src={Gato}
+                    alt=""
+                    className="w-full h-[200px] rounded-t-lg"
+                  />
                   <h1 className="text-2xl font-bold">Maggie</h1>
                   <span>Raça: gato</span>
                   <span>Porte: Pequeno</span>
                   <button
                     onClick={() => navigate("/pet")}
-                    className="w-full py-2 text-xl font-semibold bg-yellow-400">
+                    className="px-8 py-2 text-xl font-semibold bg-yellow-400">
                     Ver detalhes
                   </button>
                 </div>

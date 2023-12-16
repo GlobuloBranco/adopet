@@ -1,9 +1,13 @@
+import { useState } from "react";
 import Navbar from "../components/Navbar";
+import NewPet from "../components/NewPet";
 
 export default function User() {
+  const [newPet, setNewPet] = useState(false);
   return (
     <>
       <Navbar />
+      {newPet && <NewPet setNewPet={setNewPet} />}
       <main className="flex items-start justify-center min-h-screen bg-neutral-100">
         <div className="flex gap-24 p-12 text-xl border border-black border-dashed rounded-xl mt-44">
           <div className="flex flex-col items-center gap-4">
@@ -12,9 +16,13 @@ export default function User() {
               width={200}
               className="rounded-full"
             />
-            <button className="px-6 py-2 bg-yellow-400">Cadastrar pet</button>
+            <button
+              onClick={() => setNewPet(true)}
+              className="px-6 py-2 bg-yellow-400">
+              Cadastrar pet
+            </button>
           </div>
-          <div className="grid grid-cols-3">
+          <div className="grid self-center grid-cols-3 gap-10">
             <div className="">
               <h1 className="font-semibold">Nome</h1>
               <p>Robert Laplace</p>
