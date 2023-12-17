@@ -9,14 +9,27 @@ import axios from "axios";
 export default function User() {
   const [newPet, setNewPet] = useState(false);
   const [pets, setPets] = useState([]);
+  const [userData, setUserData] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
+    const idUser = localStorage.getItem("id_user");
     axios
-      .get(`http://localhost:3000/pet/petsUsuario/1`)
+      .post("http://localhost:3000/encontrar/usuario", {
+        cd_user: idUser,
+      })
       .then((res) => {
-        console.log(res.data);
-        setPets(res.data);
+        console.log(res);
+        setUserData(res.data);
+        axios
+          .get(`http://localhost:3000/pet/petsUsuario/${idUser}`)
+          .then((res) => {
+            console.log(res.data);
+            setPets(res.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -44,15 +57,15 @@ export default function User() {
             <div className="grid self-center grid-cols-3 gap-10">
               <div className="">
                 <h1 className="font-semibold">Nome</h1>
-                <p>Eduardo Pinheiro</p>
+                <p>{userData.NM_USER}</p>
               </div>
               <div className="">
                 <h1 className="font-semibold">CPF</h1>
-                <p>024.144.140-49</p>
+                <p>{userData.CPF_USER}</p>
               </div>
               <div className="">
                 <h1 className="font-semibold">Email</h1>
-                <p>dudupinheiro@gmail.com</p>
+                <p>{userData.EMAIL_USER}</p>
               </div>
               <div className="">
                 <h1 className="font-semibold">Telefone</h1>
@@ -60,7 +73,7 @@ export default function User() {
               </div>
               <div className="">
                 <h1 className="font-semibold">Cidade</h1>
-                <p>Santos</p>
+                <p>{userData.CIDADE_USER}</p>
               </div>
               <div className="">
                 <h1 className="font-semibold">Estado</h1>

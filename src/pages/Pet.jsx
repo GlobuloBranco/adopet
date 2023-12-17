@@ -14,16 +14,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Pet() {
-  const [pet, setPet] = useState([]);
+  const [pet, setPet] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
+    console.log(location);
     axios
-      .get(`http://localhost:3000/pet/petsUsuario/1`)
+      .get(`http://localhost:3000/pet/viewPet/${location.state.id}`)
       .then((res) => {
         console.log(res.data);
-        setPet(res.data[1]);
+        setPet(res.data[0]);
       })
       .catch((err) => {
         console.log(err);
@@ -72,14 +73,14 @@ export default function Pet() {
             <div className="relative flex items-center gap-1">
               <IoMdPerson />
               <span className="absolute text-xs bottom-5 left-5">Dono:</span>
-              <span>Eduardo Pinheiro</span>
+              <span>{pet.NM_USER}</span>
             </div>
             <div className="relative flex items-center gap-1">
               <FaRegCalendarAlt />
               <span className="absolute text-xs bottom-5 left-5">
                 Publicado em:
               </span>
-              <span>16/12/2023</span>
+              <span>{pet.DATE_PUB}</span>
             </div>
           </div>
           <button

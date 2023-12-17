@@ -12,11 +12,12 @@ export default function NewPet({ setNewPet }) {
   const [gender, setGender] = useState("");
   const [castrado, setCastrado] = useState("");
   const { register, handleSubmit } = useForm();
+  const idUser = localStorage.getItem("id_user");
 
   const onSubmit = (data) => {
     axios
       .post("http://localhost:3000/pet/registrar", {
-        id_user: 1,
+        id_user: idUser,
         name_pet: data.name,
         gender: gender,
         raca: data.raca,
