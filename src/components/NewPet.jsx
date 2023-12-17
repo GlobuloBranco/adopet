@@ -1,4 +1,4 @@
-import { PiGenderFemaleBold, PiGenderMaleBold } from "react-icons/pi";
+import { PiCat, PiGenderFemaleBold, PiGenderMaleBold } from "react-icons/pi";
 import { FaDog } from "react-icons/fa";
 import { IoCloseOutline } from "react-icons/io5";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,8 @@ export default function NewPet({ setNewPet }) {
   const [renderedPicture, setRenderedPicture] = useState(null);
   const [picture, setPicture] = useState(null);
   const [gender, setGender] = useState("");
-  const [castrado, setCastrado] = useState("");
+  const [pet, setPet] = useState("");
+  // const [castrado, setCastrado] = useState("");
   const { register, handleSubmit } = useForm();
   const idUser = localStorage.getItem("id_user");
 
@@ -19,6 +20,7 @@ export default function NewPet({ setNewPet }) {
       .post("http://localhost:3000/pet/registrar", {
         id_user: idUser,
         name_pet: data.name,
+        tipo: pet,
         gender: gender,
         raca: data.raca,
         porte: data.porte,
@@ -52,7 +54,7 @@ export default function NewPet({ setNewPet }) {
   };
   return (
     <div className="fixed flex items-center justify-center w-full min-h-screen bg-[rgba(0,0,0,0.2)]">
-      <div className="relative flex flex-col items-center gap-6 px-20 py-10 bg-white rounded-lg animate-zoomIn">
+      <div className="relative flex flex-col items-center gap-6 px-20 py-10 mt-12 bg-white rounded-lg animate-zoomIn max-h-[80vh] overflow-y-scroll">
         <button
           onClick={() => {
             setNewPet(false);
@@ -69,19 +71,16 @@ export default function NewPet({ setNewPet }) {
           onSubmit={handleSubmit(onSubmit)}
           className="relative grid grid-cols-2 gap-6 text-xl place-items-center">
           <div className="col-span-2">
-            {picture === null && (
-              <PiDog
-                size={50}
-                className="absolute top-12 left-[15.5rem] opacity"
-              />
-            )}
             <label
               htmlFor="img_upload"
-              className="self-center my-5 rounded-full">
+              className="self-center my-5 rounded-full cursor-pointer">
               <img
                 src={picture || null}
-                className={`m-auto nt-12 border w-36 h-36 rounded-full border-black cursor-pointer`}
+                className={`m-auto nt-12 border w-36 h-36 rounded-full border-black`}
               />
+              {picture === null && (
+                <PiDog size={50} className="absolute top-12 left-[15.5rem]" />
+              )}
             </label>
             <input
               onChange={handleImageUpload}
@@ -90,7 +89,7 @@ export default function NewPet({ setNewPet }) {
               className="hidden"
             />
           </div>
-          <div className="flex flex-col gap-2 font-semibold">
+          <div className="flex flex-col w-full col-span-2 gap-2 font-semibold">
             <label htmlFor="">Nome do pet</label>
             <input
               type="text"
@@ -100,7 +99,31 @@ export default function NewPet({ setNewPet }) {
             />
           </div>
           <div className="flex flex-col gap-2">
-            <h1 className="font-semibold">Sexo do pet:</h1>
+            <h1 className="font-semibold">Pet</h1>
+            <div className="flex gap-2">
+              <button onClick={() => setPet("Cachorro")} type="button">
+                <div
+                  className={`flex items-center gap-2 px-4 py-1 text-xl text-slate-600 border border-slate-600 ${
+                    pet === "Cachorro" &&
+                    "!text-white !bg-slate-600 !font-semibold"
+                  } hover:bg-slate-100`}>
+                  <PiDog size={20} />
+                  <span className="m-auto">Cachorro</span>
+                </div>
+              </button>
+              <button onClick={() => setPet("Gato")} type="button">
+                <div
+                  className={`flex items-center gap-2 px-4 py-1 text-xl text-slate-600 border border-slate-600 ${
+                    pet === "Gato" && "!text-white !bg-slate-600 !font-semibold"
+                  } hover:bg-slate-100`}>
+                  <PiCat size={20} />
+                  <span className="m-auto">Gato</span>
+                </div>
+              </button>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="font-semibold">Sexo do pet</h1>
             <div className="flex gap-2">
               <button onClick={() => setGender("Macho")} type="button">
                 <div

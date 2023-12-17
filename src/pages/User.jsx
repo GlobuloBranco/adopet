@@ -11,9 +11,12 @@ export default function User() {
   const [pets, setPets] = useState([]);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
+  const idUser = localStorage.getItem("id_user");
 
   useEffect(() => {
-    const idUser = localStorage.getItem("id_user");
+    if (!idUser) {
+      navigate("/login");
+    }
     axios
       .post("http://localhost:3000/encontrar/usuario", {
         cd_user: idUser,
@@ -34,7 +37,7 @@ export default function User() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [newPet]);
 
   return (
     <>
@@ -50,8 +53,16 @@ export default function User() {
                   setNewPet(true);
                   document.body.style.overflow = "hidden";
                 }}
-                className="px-6 py-2 bg-yellow-400">
+                className="w-full py-2 font-semibold bg-yellow-400 rounded-2xl">
                 Cadastrar pet
+              </button>
+              <button
+                onClick={() => {
+                  localStorage.clear();
+                  navigate("/login");
+                }}
+                className="w-full py-2 font-semibold text-white bg-red-700 rounded-2xl">
+                Deslogar
               </button>
             </div>
             <div className="grid self-center grid-cols-3 gap-10">
@@ -97,7 +108,7 @@ export default function User() {
                 <span>Porte: {e.PORTE}</span>
                 <button
                   onClick={() => navigate("/pet", { state: { id: e.CD_PET } })}
-                  className="px-8 py-2 text-xl font-semibold bg-yellow-400">
+                  className="px-8 py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
                   Ver detalhes
                 </button>
               </div>

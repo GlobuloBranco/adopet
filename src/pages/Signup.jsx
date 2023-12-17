@@ -6,21 +6,31 @@ import axios from "axios";
 
 export default function Signup() {
   const { register, handleSubmit } = useForm();
+  const [error, setError] = useState(false);
 
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:3000/cadastro/usuario", {
-        nm_user: data.name,
-        cpf_user: data.cpf,
-        email_user: data.email,
-        senha_user: data.password,
-      })
-      .then(() => {
-        navigate("/login");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (
+      data.name != "" &&
+      data.cpf != "" &&
+      data.email != "" &&
+      data.password != ""
+    ) {
+      axios
+        .post("http://localhost:3000/cadastro/usuario", {
+          nm_user: data.name,
+          cpf_user: data.cpf,
+          email_user: data.email,
+          senha_user: data.password,
+        })
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      setError(true);
+    }
   };
 
   const navigate = useNavigate();
@@ -37,7 +47,9 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              {...register("name")}
+              {...register("name", {
+                onChange: () => setError(false),
+              })}
               id="name"
               className="p-2 text-xl border w-80 border-neutral-300"
             />
@@ -48,7 +60,9 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              {...register("cpf")}
+              {...register("cpf", {
+                onChange: () => setError(false),
+              })}
               id="cpf"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -59,7 +73,9 @@ export default function Signup() {
             </label>
             <input
               type="date"
-              {...register("data_nasc")}
+              {...register("data_nasc", {
+                onChange: () => setError(false),
+              })}
               id="data"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -70,7 +86,9 @@ export default function Signup() {
             </label>
             <input
               type="email"
-              {...register("email")}
+              {...register("email", {
+                onChange: () => setError(false),
+              })}
               id="email"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -81,7 +99,9 @@ export default function Signup() {
             </label>
             <input
               type="password"
-              {...register("password")}
+              {...register("password", {
+                onChange: () => setError(false),
+              })}
               id="password"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -97,6 +117,11 @@ export default function Signup() {
             />
           </div>
         </div>
+        {error && (
+          <span className="mb-2 text-base text-red-600">
+            Preencha todos os campos
+          </span>
+        )}
         <button className="py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
           Cadastrar
         </button>

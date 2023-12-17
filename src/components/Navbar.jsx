@@ -1,8 +1,9 @@
-import { FaUser } from "react-icons/fa";
+import { FaUser, FaUserCircle } from "react-icons/fa";
 import Marca from "../assets/marca.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const idUser = localStorage.getItem("id_user");
   const navigate = useNavigate();
   return (
     <div className="fixed top-0 w-full px-4 py-4 bg-yellow-400">
@@ -11,14 +12,16 @@ export default function Navbar() {
           <img src={Marca} alt="logo" width={180} className="object-contain" />
         </button>
         <div className="flex gap-4 text-xl">
-          <button>Sobre nós</button>
-          <button
-            onClick={() => navigate("/login")}
-            className="p-2 px-4 bg-white rounded">
-            Login
-          </button>
+          {/* <button>Sobre nós</button> */}
+          {!idUser && (
+            <button
+              onClick={() => navigate("/login")}
+              className="p-2 px-4 bg-white rounded">
+              Login
+            </button>
+          )}
           <button onClick={() => navigate("/profile")}>
-            <FaUser />
+            <FaUserCircle size={40} fill="#000" />
           </button>
         </div>
       </div>
