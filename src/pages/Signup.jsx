@@ -1,12 +1,34 @@
 import { useState } from "react";
 import Logo from "../assets/adopet-logo-site.png";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import axios from "axios";
 
 export default function Signup() {
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = (data) => {
+    axios
+      .post("http://localhost:3000/cadastro/usuario", {
+        nm_user: data.name,
+        cpf_user: data.cpf,
+        email_user: data.email,
+        senha_user: data.password,
+      })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const navigate = useNavigate();
   return (
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
-      <form action="" className="flex flex-col px-12 py-10 bg-white rounded-lg">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col px-12 py-10 bg-white rounded-lg">
         <img src={Logo} alt="" width={200} className="m-auto" />
         <div className="grid grid-cols-2 gap-12 my-6">
           <div className="flex flex-col text-xl">
@@ -15,7 +37,7 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              name=""
+              {...register("name")}
               id="name"
               className="p-2 text-xl border w-80 border-neutral-300"
             />
@@ -26,7 +48,7 @@ export default function Signup() {
             </label>
             <input
               type="text"
-              name=""
+              {...register("cpf")}
               id="cpf"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -37,7 +59,7 @@ export default function Signup() {
             </label>
             <input
               type="date"
-              name=""
+              {...register("data_nasc")}
               id="data"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -48,7 +70,7 @@ export default function Signup() {
             </label>
             <input
               type="email"
-              name=""
+              {...register("email")}
               id="email"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -59,7 +81,7 @@ export default function Signup() {
             </label>
             <input
               type="password"
-              name=""
+              {...register("password")}
               id="password"
               className="p-2 text-xl border border-neutral-300"
             />
@@ -70,15 +92,12 @@ export default function Signup() {
             </label>
             <input
               type="password"
-              name=""
               id="password_repeat"
               className="p-2 text-xl border border-neutral-300"
             />
           </div>
         </div>
-        <button
-          onClick={() => navigate("/")}
-          className="py-2 text-xl font-semibold bg-yellow-400">
+        <button className="py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
           Cadastrar
         </button>
         <div className="flex justify-between w-full">

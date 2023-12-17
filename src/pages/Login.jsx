@@ -28,13 +28,13 @@ export default function Login() {
           <input
             type="password"
             name=""
-            id="email"
+            id="password"
             className="p-2 text-xl border w-[20rem]"
           />
         </div>
         <button
           onClick={() => navigate("/")}
-          className="py-2 text-xl font-semibold bg-yellow-400">
+          className="py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
           Entrar
         </button>
         <span className="-mt-4 text-base">

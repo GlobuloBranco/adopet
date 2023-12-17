@@ -1,13 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import NewPet from "../components/NewPet";
 import Gato from "../assets/gato.png";
 import UserPic from "../assets/user-pfp.jpg";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function User() {
   const [newPet, setNewPet] = useState(false);
+  const [pets, setPets] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/pet/petsUsuario/1`)
+      .then((res) => {
+        console.log(res.data);
+        setPets(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -54,26 +69,26 @@ export default function User() {
             </div>
           </div>
           <h1 className="mt-12 text-3xl font-semibold">Pets cadastrados</h1>
-          <div className="flex gap-6 w-[50%] overflow-x-scroll bg-gray-200 p-10 rounded-xl mb-24 mt-4">
-            {Array(8)
-              .fill("")
-              .map((e) => (
-                <div className="flex flex-col items-center min-w-[14rem] gap-3 pb-6 bg-white rounded-lg shadow-xl">
-                  <img
-                    src={Gato}
-                    alt=""
-                    className="w-full h-[150px] rounded-t-lg"
-                  />
-                  <h1 className="text-xl font-bold">Maggie</h1>
-                  <span>Raça: gato</span>
-                  <span>Porte: Pequeno</span>
-                  <button
-                    onClick={() => navigate("/pet")}
-                    className="px-8 py-2 text-xl font-semibold bg-yellow-400">
-                    Ver detalhes
-                  </button>
-                </div>
-              ))}
+          <div className="flex gap-6 w-[80rem] overflow-x-scroll bg-gray-200 p-10 rounded-xl mb-24 mt-4">
+            {pets.map((e, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center min-w-[14rem] gap-3 pb-6 bg-white rounded-lg shadow-xl">
+                <img
+                  src={e.IMG_PET}
+                  alt=""
+                  className="w-full h-[150px] rounded-t-lg"
+                />
+                <h1 className="text-xl font-bold">{e.NM_PET}</h1>
+                <span>Raça: {e.RACA}</span>
+                <span>Porte: {e.PORTE}</span>
+                <button
+                  onClick={() => navigate("/pet", { state: { id: e.CD_PET } })}
+                  className="px-8 py-2 text-xl font-semibold bg-yellow-400">
+                  Ver detalhes
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </main>

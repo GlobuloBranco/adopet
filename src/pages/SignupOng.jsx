@@ -100,7 +100,7 @@ export default function SignupOng() {
         </div>
         <button
           onClick={() => navigate("/")}
-          className="py-2 text-xl font-semibold bg-yellow-400">
+          className="py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
           Cadastrar
         </button>
         <div className="flex justify-between w-full">
