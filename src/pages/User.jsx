@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import NewPet from "../components/NewPet";
 import Gato from "../assets/gato.png";
-import UserPic from "../assets/user-pfp.jpg";
+import UserPic from "../assets/blank-pfp.jpg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -47,7 +47,11 @@ export default function User() {
         <div className="flex flex-col items-center">
           <div className="flex gap-24 p-12 text-xl border border-black border-dashed rounded-xl mt-44">
             <div className="flex flex-col items-center gap-4">
-              <img src={UserPic} width={200} className="rounded-full" />
+              <img
+                src={UserPic}
+                width={180}
+                className="border border-black rounded-full"
+              />
               <button
                 onClick={() => {
                   setNewPet(true);
@@ -94,6 +98,9 @@ export default function User() {
           </div>
           <h1 className="mt-12 text-3xl font-semibold">Pets cadastrados</h1>
           <div className="flex gap-6 w-[80rem] overflow-x-scroll bg-gray-200 p-10 rounded-xl mb-24 mt-4">
+            {pets.length < 1 && (
+              <span className="text-xl">Nenhum pet cadastrado</span>
+            )}
             {pets.map((e, i) => (
               <div
                 key={i}

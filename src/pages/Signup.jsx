@@ -13,6 +13,7 @@ export default function Signup() {
       data.name != "" &&
       data.cpf != "" &&
       data.email != "" &&
+      data.city != "" &&
       data.password != ""
     ) {
       axios
@@ -20,6 +21,7 @@ export default function Signup() {
           nm_user: data.name,
           cpf_user: data.cpf,
           email_user: data.email,
+          cidade_user: data.city,
           senha_user: data.password,
         })
         .then(() => {
@@ -38,10 +40,10 @@ export default function Signup() {
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col px-12 py-10 bg-white rounded-lg">
+        className="flex flex-col px-12 py-10 bg-white rounded-lg max-h-[80vh] overflow-y-scroll mx-6">
         <img src={Logo} alt="" width={200} className="m-auto" />
-        <div className="grid grid-cols-2 gap-12 my-6">
-          <div className="flex flex-col text-xl">
+        <div className="grid grid-cols-2 gap-12 my-6 w-[40rem]">
+          <div className="flex flex-col col-span-2 text-xl">
             <label htmlFor="name" className="font-semibold">
               Nome
             </label>
@@ -51,7 +53,7 @@ export default function Signup() {
                 onChange: () => setError(false),
               })}
               id="name"
-              className="p-2 text-xl border w-80 border-neutral-300"
+              className="w-full p-2 text-xl border border-neutral-300"
             />
           </div>
           <div className="flex flex-col text-xl">
@@ -64,6 +66,19 @@ export default function Signup() {
                 onChange: () => setError(false),
               })}
               id="cpf"
+              className="p-2 text-xl border border-neutral-300"
+            />
+          </div>
+          <div className="flex flex-col text-xl">
+            <label htmlFor="email" className="font-semibold">
+              Email
+            </label>
+            <input
+              type="email"
+              {...register("email", {
+                onChange: () => setError(false),
+              })}
+              id="email"
               className="p-2 text-xl border border-neutral-300"
             />
           </div>
@@ -81,15 +96,15 @@ export default function Signup() {
             />
           </div>
           <div className="flex flex-col text-xl">
-            <label htmlFor="email" className="font-semibold">
-              Email
+            <label htmlFor="city" className="font-semibold">
+              Cidade
             </label>
             <input
-              type="email"
-              {...register("email", {
+              type="text"
+              {...register("city", {
                 onChange: () => setError(false),
               })}
-              id="email"
+              id="city"
               className="p-2 text-xl border border-neutral-300"
             />
           </div>
