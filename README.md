@@ -22,7 +22,7 @@ Abra o cmd
 
 Rode os seguintes comandos (um de cada vez):
 
----
+```
 
 git clone https://github.com/GlobuloBranco/SalvaTCC
 
@@ -34,7 +34,7 @@ cd servidor
 
 npm run dev
 
----
+```
 
 Pronto, o back ja ta rodando
 
@@ -46,7 +46,7 @@ Abra um NOVO cmd (não usa o cmd do back)
 
 Rode os seguintes comandos (um de cada vez):
 
----
+```
 
 git clone "https://github.com/GlobuloBranco/adopet"
 
@@ -56,7 +56,7 @@ npm i
 
 npm run dev
 
----
+```
 
 - entrar no link: http://localhost:5173 (ou no link que aparecer no cmd)
 
