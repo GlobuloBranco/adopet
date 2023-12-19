@@ -1,4 +1,4 @@
-## RODAR O BANCO
+## Banco
 
 - Abra o MySQL Workbench
 
@@ -16,17 +16,11 @@
 
 Pronto, o banco está rodando
 
-## RODAR O BACK
-
-Abra o cmd
+## Back-end
 
 Rode os seguintes comandos (um de cada vez):
 
 ```
-git clone https://github.com/GlobuloBranco/SalvaTCC
-
-cd SalvaTCC
-
 npm i
 
 cd servidor
@@ -34,13 +28,7 @@ cd servidor
 npm run dev
 ```
 
-Pronto, o back ja ta rodando
-
-(NÃO FECHE ESSE CMD)
-
-## RODAR O FRONT
-
-Abra um NOVO cmd (não usa o cmd do back)
+## Front-end
 
 Rode os seguintes comandos (um de cada vez):
 
@@ -54,6 +42,4 @@ npm i
 npm run dev
 ```
 
-- entrar no link: http://localhost:5173 (ou no link que aparecer no cmd)
-
-Pronto, o projeto todo ja está funcionando
+- entrar no link: http://localhost:5173
