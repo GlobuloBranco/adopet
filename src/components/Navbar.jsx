@@ -1,5 +1,5 @@
 import { FaUser, FaUserCircle } from "react-icons/fa";
-import Marca from "../assets/marca.png";
+// import Marca from "../assets/marca.png";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
@@ -9,7 +9,7 @@ export default function Navbar() {
     <div className="fixed top-0 w-full px-4 py-4 bg-yellow-400">
       <div className="flex justify-between px-4">
         <button onClick={() => navigate("/")}>
-          <img src={Marca} alt="logo" width={180} className="object-contain" />
+          <img src={null} alt="logo" width={180} className="object-contain" />
         </button>
         <div className="flex gap-4 text-xl">
           {/* <button>Sobre nós</button> */}
