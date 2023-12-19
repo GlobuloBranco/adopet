@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Logo from "../assets/adopet-logo-site.png";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -29,7 +28,7 @@ export default function Login() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-6 px-12 py-10 bg-white rounded-lg">
         <div className="flex flex-col text-xl">
-          <img src={Logo} alt="" width={200} className="m-auto mb-4" />
+          <img src={null} alt="" width={200} className="m-auto mb-4" />
           <label htmlFor="email" className="font-semibold">
             Email
           </label>
