@@ -45,9 +45,9 @@ Abra um NOVO cmd (não usa o cmd do back)
 Rode os seguintes comandos (um de cada vez):
 
 ```
-git clone "https://github.com/GlobuloBranco/adopet"
+git clone "https://github.com/GlobuloBranco/adoptify"
 
-cd adopet
+cd adoptify
 
 npm i
 
