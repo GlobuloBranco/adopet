@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BackButton from "../components/BackButton";
 
 export default function SignupOng() {
   const navigate = useNavigate();
   return (
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
-      <form action="" className="flex flex-col px-12 py-10 bg-white rounded-lg">
+      <form className="relative flex flex-col px-12 py-10 bg-white rounded-lg">
+        <BackButton />
         <img src={null} alt="" width={200} className="m-auto" />
         <div className="grid grid-cols-2 gap-12 my-6">
           <div className="flex flex-col text-xl">

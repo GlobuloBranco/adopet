@@ -9,10 +9,10 @@ export default function Home() {
   const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/encontrar/pets`)
+      .get(`http://localhost:3000/pets`)
       .then((res) => {
         console.log(res.data);
-        setPets(res.data.message);
+        setPets(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,7 +41,7 @@ export default function Home() {
                 <span>Raça: {e.RACA}</span>
                 <span>Porte: {e.PORTE}</span>
                 <button
-                  onClick={() => navigate("/pet", { state: { id: e.CD_PET } })}
+                  onClick={() => navigate("/pet", { state: { id: e.ID_PET } })}
                   className="px-8 py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
                   Ver detalhes
                 </button>

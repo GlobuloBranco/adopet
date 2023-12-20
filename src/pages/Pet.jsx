@@ -28,7 +28,7 @@ export default function Pet() {
   const idPet = location.state.id;
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/pet/viewPet/${idPet}`)
+      .get(`http://localhost:3000/pets`)
       .then((res) => {
         console.log(res.data);
         setPetData(res.data[0]);

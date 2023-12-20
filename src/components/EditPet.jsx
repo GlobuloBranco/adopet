@@ -31,8 +31,8 @@ export default function EditPet({ setEditPet, petData, idPet }) {
 
   const onSubmit = (data) => {
     axios
-      .put("http://localhost:3000/pet/atualiza", {
-        cd_pet: idPet,
+      .post("http://localhost:3000/pets", {
+        ID_USER: 1,
         NM_PET: data.name,
         TIPO: type,
         SEXO: gender,

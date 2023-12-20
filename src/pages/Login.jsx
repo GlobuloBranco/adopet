@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Logo from "../assets/adoptify-logo.png";
 import axios from "axios";
+import BackButton from "../components/BackButton";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -26,9 +28,10 @@ export default function Login() {
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-6 px-12 py-10 bg-white rounded-lg">
+        className="relative flex flex-col gap-6 px-12 py-12 bg-white rounded-lg">
+        <BackButton />
         <div className="flex flex-col text-xl">
-          <img src={null} alt="" width={200} className="m-auto mb-4" />
+          <img src={Logo} alt="" width={150} className="m-auto my-4" />
           <label htmlFor="email" className="font-semibold">
             Email
           </label>

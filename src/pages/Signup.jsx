@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import BackButton from "../components/BackButton";
 
 export default function Signup() {
   const { register, handleSubmit } = useForm();
@@ -39,7 +40,8 @@ export default function Signup() {
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col px-12 py-10 bg-white rounded-lg max-h-[80vh] overflow-y-scroll mx-6">
+        className="relative flex flex-col px-12 py-10 bg-white rounded-lg max-h-[80vh] overflow-y-scroll mx-6">
+        <BackButton />
         <img src={null} alt="" width={200} className="m-auto" />
         <div className="grid grid-cols-2 gap-12 my-6 w-[40rem]">
           <div className="flex flex-col col-span-2 text-xl">
