@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { PiDog } from "react-icons/pi";
 
-export default function EditPet({ setEditPet, petData, idPet }) {
+export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
   const [renderedPicture, setRenderedPicture] = useState(null);
   const [picture, setPicture] = useState(null);
   const [gender, setGender] = useState("");
@@ -30,25 +30,17 @@ export default function EditPet({ setEditPet, petData, idPet }) {
   }, []);
 
   const onSubmit = (data) => {
-    axios
-      .post("http://localhost:3000/pets", {
-        ID_USER: 1,
-        NM_PET: data.name,
-        TIPO: type,
-        SEXO: gender,
-        RACA: data.raca,
-        PORTE: data.porte,
-        CASTRADO: data.castrado,
-        IMG_PET: renderedPicture,
-      })
-      .then((res) => {
-        console.log(res);
-        setEditPet(false);
-        document.body.style.overflow = "visible";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log({ ...petData, NM_PET: "Nanna" });
+    setPetData({
+      ...petData,
+      NM_PET: data.name,
+      TIPO: type,
+      SEXO: gender,
+      RACA: data.raca,
+      PORTE: data.porte,
+      CASTRADO: data.castrado,
+    });
+    setEditPet(false);
   };
 
   const handleImageUpload = (e) => {

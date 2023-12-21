@@ -25,24 +25,24 @@ export default function Pet() {
   const [deletePet, setDeletePet] = useState(false);
   const [solicitado, setSolicitado] = useState(false);
   const idUser = localStorage.getItem("id_user");
+  const pets = location.state.pets;
   const idPet = location.state.id;
+
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/pets`)
-      .then((res) => {
-        console.log(res.data);
-        setPetData(res.data[0]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [editPet]);
+    const petFilter = pets.filter((a) => a.ID_PET === idPet);
+    setPetData(petFilter[0]);
+  }, []);
 
   return (
     <>
       <Navbar />
       {editPet && (
-        <EditPet setEditPet={setEditPet} petData={petData} idPet={idPet} />
+        <EditPet
+          setEditPet={setEditPet}
+          petData={petData}
+          setPetData={setPetData}
+          idPet={idPet}
+        />
       )}
       {deletePet && <DeletePet setDeletePet={setDeletePet} idPet={idPet} />}
       <main className="flex items-center justify-center min-h-screen bg-[url('./assets/bg-pet.jpg')] bg-cover">
@@ -79,7 +79,7 @@ export default function Pet() {
             )}
             <div className="flex items-center px-4 py-2 text-2xl text-orange-400 border border-orange-400 w-52">
               <FaPaw size={25} />
-              <span className="m-auto">{petData.RACA}</span>
+              <span className="m-auto text-center">{petData.RACA}</span>
             </div>
             <div className="flex items-center px-4 py-2 text-2xl text-green-600 border border-green-600 w-52">
               <FaHandHoldingMedical size={25} />

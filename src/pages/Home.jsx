@@ -4,20 +4,50 @@ import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+import Pet1 from "../assets/pets/pet1.jpg";
+import Pet2 from "../assets/pets/pet2.jpg";
+import Pet3 from "../assets/pets/pet3.png";
+
 export default function Home() {
-  const [pets, setPets] = useState([]);
+  const [pets, setPets] = useState([
+    {
+      ID_PET: 1,
+      NM_PET: "Luna",
+      RACA: "American Shorthair",
+      SEXO: "Fêmea",
+      PORTE: "Pequeno",
+      CASTRADO: "Não",
+      TIPO: "Gato",
+      IMG_PET: Pet1,
+      NM_USER: "John Doe",
+      DATE_PUB: "10/12/2023",
+    },
+    {
+      ID_PET: 2,
+      NM_PET: "Rocky",
+      RACA: "Collie",
+      SEXO: "Macho",
+      PORTE: "Grande",
+      CASTRADO: "Não",
+      TIPO: "Cachorro",
+      IMG_PET: Pet2,
+      NM_USER: "Janne Hawks",
+      DATE_PUB: "01/09/2023",
+    },
+    {
+      ID_PET: 3,
+      NM_PET: "Cleo",
+      RACA: "Ragdoll",
+      SEXO: "Macho",
+      PORTE: "Pequeno",
+      CASTRADO: "Sim",
+      TIPO: "Gato",
+      IMG_PET: Pet3,
+      NM_USER: "Janne Hawks",
+      DATE_PUB: "01/09/2023",
+    },
+  ]);
   const navigate = useNavigate();
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3000/pets`)
-      .then((res) => {
-        console.log(res.data);
-        setPets(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <>
       <Navbar />
@@ -41,7 +71,9 @@ export default function Home() {
                 <span>Raça: {e.RACA}</span>
                 <span>Porte: {e.PORTE}</span>
                 <button
-                  onClick={() => navigate("/pet", { state: { id: e.ID_PET } })}
+                  onClick={() =>
+                    navigate("/pet", { state: { pets: pets, id: e.ID_PET } })
+                  }
                   className="px-8 py-2 text-xl font-semibold bg-yellow-400 hover:bg-yellow-500">
                   Ver detalhes
                 </button>

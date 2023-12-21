@@ -14,9 +14,9 @@ export default function User() {
   const idUser = localStorage.getItem("id_user");
 
   useEffect(() => {
-    if (!idUser) {
-      navigate("/login");
-    }
+    // if (!idUser) {
+    //   navigate("/login");
+    // }
     axios
       .post("http://localhost:3000/encontrar/usuario", {
         cd_user: idUser,
