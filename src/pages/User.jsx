@@ -22,12 +22,10 @@ export default function User() {
         cd_user: idUser,
       })
       .then((res) => {
-        console.log(res);
         setUserData(res.data);
         axios
           .get(`http://localhost:3000/pet/petsUsuario/${idUser}`)
           .then((res) => {
-            console.log(res.data);
             setPets(res.data);
           })
           .catch((err) => {

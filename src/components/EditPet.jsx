@@ -12,7 +12,13 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
   const [gender, setGender] = useState("");
   const [type, setType] = useState("");
   // const [castrado, setCastrado] = useState("");
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: petData.NM_PET,
+      raca: petData.RACA,
+      porte: petData.PORTE,
+    },
+  });
   const idUser = localStorage.getItem("id_user");
 
   useEffect(() => {
@@ -30,7 +36,6 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
   }, []);
 
   const onSubmit = (data) => {
-    console.log({ ...petData, NM_PET: "Nanna" });
     setPetData({
       ...petData,
       NM_PET: data.name,
@@ -46,12 +51,10 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setPicture(URL.createObjectURL(file));
-    console.log(file);
     const reader = new FileReader();
 
     reader.onloadend = () => {
       const base64 = reader.result;
-      console.log(base64);
       setRenderedPicture(base64);
     };
     if (file) {

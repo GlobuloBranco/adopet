@@ -1,21 +1,10 @@
-import { useForm } from "react-hook-form";
-import { useState } from "react";
-import axios from "axios";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function DeletePet({ setDeletePet, idPet }) {
   const navigate = useNavigate();
   const handleDeletePet = () => {
-    axios
-      .delete(`http://localhost:3000/pet/delete/${idPet}`)
-      .then((res) => {
-        console.log(res);
-        navigate("/profile");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    setDeletePet(false);
   };
 
   return (

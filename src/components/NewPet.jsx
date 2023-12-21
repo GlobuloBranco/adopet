@@ -28,7 +28,6 @@ export default function NewPet({ setNewPet }) {
         image: renderedPicture,
       })
       .then((res) => {
-        console.log(res);
         setNewPet(false);
         document.body.style.overflow = "visible";
       })
@@ -40,12 +39,10 @@ export default function NewPet({ setNewPet }) {
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     setPicture(URL.createObjectURL(file));
-    console.log(file);
     const reader = new FileReader();
 
     reader.onloadend = () => {
       const base64 = reader.result;
-      console.log(base64);
       setRenderedPicture(base64);
     };
     if (file) {
