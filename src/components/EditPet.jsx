@@ -63,7 +63,7 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
   };
   return (
     <div className="fixed flex items-center justify-center w-full min-h-screen bg-[rgba(0,0,0,0.4)] z-20">
-      <div className="relative flex flex-col items-center gap-6 px-20 py-10 mt-12 bg-white rounded-lg animate-zoomIn max-h-[80vh] overflow-y-scroll">
+      <div className="relative flex flex-col items-center gap-6 px-20 py-10 mt-12 bg-white rounded-lg animate-zoomIn max-h-[80vh] overflow-y-scroll mx-6 overflow-x-hidden">
         <button
           onClick={() => {
             setEditPet(false);
@@ -72,23 +72,23 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
           className="absolute right-2 top-2">
           <IoCloseOutline size={40} />
         </button>
-        <div className="flex items-center gap-2 text-3xl font-bold">
+        <div className="flex items-center gap-2 text-3xl font-bold max-sm:text-2xl">
           <FaDog size={40} />
           <h1>Editar pet</h1>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="relative grid grid-cols-2 gap-6 text-xl place-items-center">
+          className="grid grid-cols-2 gap-6 justify-center text-xl place-items-center max-sm:!flex max-sm:!flex-wrap">
           <div className="col-span-2">
             <label
               htmlFor="img_upload"
-              className="self-center my-5 rounded-full cursor-pointer">
+              className="relative self-center my-5 rounded-full cursor-pointer">
               <img
                 src={picture || null}
-                className={`m-auto nt-12 border w-36 h-36 rounded-full border-black`}
+                className={`m-auto border w-36 h-36 rounded-full border-black`}
               />
               {picture === null && (
-                <PiDog size={50} className="absolute top-12 left-[15.5rem]" />
+                <PiDog size={50} className="absolute left-12 top-12" />
               )}
             </label>
             <input

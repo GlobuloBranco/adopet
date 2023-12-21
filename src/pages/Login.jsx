@@ -28,7 +28,7 @@ export default function Login() {
     <main className="flex items-center justify-center min-h-screen bg-neutral-100 bg-[url('./assets/bg-login.jpg')] bg-cover">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="relative flex flex-col gap-6 px-12 py-12 bg-white rounded-lg">
+        className="relative flex flex-col gap-6 px-10 py-12 mx-12 bg-white rounded-lg">
         <BackButton />
         <div className="flex flex-col text-xl">
           <img src={Logo} alt="" width={150} className="m-auto my-4" />

@@ -46,7 +46,7 @@ export default function Pet() {
       )}
       {deletePet && <DeletePet setDeletePet={setDeletePet} idPet={idPet} />}
       <main className="flex items-center justify-center min-h-screen bg-[url('./assets/bg-pet.jpg')] bg-cover">
-        <div className="flex flex-col items-center gap-6 px-16 py-10 mt-20 bg-white rounded-lg shadow-2xl max-h-[80vh] overflow-y-scroll">
+        <div className="flex flex-col items-center gap-6 px-16 py-10 mt-20 max-w-xl bg-white rounded-lg shadow-2xl max-h-[80vh] overflow-y-scroll overflow-x-hidden mx-4">
           <img
             src={petData.IMG_PET}
             alt="Pet Image"
@@ -54,7 +54,7 @@ export default function Pet() {
             className="rounded-full h-[200px]"
           />
           <h1 className="text-4xl font-medium">{petData.NM_PET}</h1>
-          <div className="grid grid-cols-2 gap-5 cursor-default">
+          <div className="flex flex-wrap justify-center gap-5 cursor-default">
             {petData.TIPO === "Gato" ? (
               <div className="flex items-center px-4 py-2 text-2xl border w-52 text-slate-500 border-slate-500">
                 <FaCat size={25} />
@@ -88,7 +88,7 @@ export default function Pet() {
               </span>
             </div>
           </div>
-          <div className="z-10 flex justify-between w-full px-2 my-4">
+          <div className="z-10 flex flex-wrap justify-center w-full gap-12 px-2 my-4">
             <div className="relative flex items-center gap-1">
               <FaDog />
               <span className="absolute text-xs bottom-5 left-5">Porte:</span>
@@ -109,7 +109,7 @@ export default function Pet() {
           </div>
 
           {idUser == petData.ID_USER ? (
-            <div className="flex w-full gap-2">
+            <div className="flex w-full gap-2 max-sm:flex-col">
               <button
                 onClick={() => setEditPet(true)}
                 className={`w-full py-3 text-2xl font-semibold text-white bg-slate-500 hover:bg-slate-600`}>

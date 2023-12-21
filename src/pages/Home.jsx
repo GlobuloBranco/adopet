@@ -52,8 +52,10 @@ export default function Home() {
     <>
       <Navbar />
       <main className="flex items-center justify-center min-h-screen bg-cover bg-neutral-100">
-        <div className="flex flex-col items-center gap-4 mt-28 max-w-[90rem]">
-          <h1 className="text-4xl font-bold">Pets disponíveis para adoção</h1>
+        <div className="flex flex-col items-center gap-4 mt-28 max-w-[90rem] mx-4">
+          <h1 className="text-4xl font-bold text-center max-sm:text-3xl">
+            Pets disponíveis para adoção
+          </h1>
           <div className="flex flex-wrap justify-center gap-16 mt-5 mb-20">
             {pets.length < 1 && (
               <span className="text-xl">Nenhum pet disponível para adoção</span>

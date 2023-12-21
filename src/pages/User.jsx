@@ -43,7 +43,7 @@ export default function User() {
       {newPet && <NewPet setNewPet={setNewPet} />}
       <main className="flex items-start justify-center min-h-screen overflow-hidden bg-neutral-100">
         <div className="flex flex-col items-center">
-          <div className="flex gap-24 p-12 text-xl border border-black border-dashed rounded-xl mt-44">
+          <div className="flex justify-center gap-24 p-12 mx-4 text-xl border border-black border-dashed rounded-xl mt-36 max-xl:flex-col">
             <div className="flex flex-col items-center gap-4">
               <img
                 src={UserPic}
@@ -67,35 +67,35 @@ export default function User() {
                 Deslogar
               </button>
             </div>
-            <div className="grid self-center grid-cols-3 gap-10">
-              <div className="">
+            <div className="grid self-center grid-cols-3 gap-10 max-sm:grid-cols-2">
+              <div>
                 <h1 className="font-semibold">Nome</h1>
-                <p>{userData.NM_USER}</p>
+                <p>John Doe</p>
               </div>
-              <div className="">
+              <div>
                 <h1 className="font-semibold">CPF</h1>
-                <p>{userData.CPF_USER}</p>
+                <p>103.117.770-15</p>
               </div>
-              <div className="">
+              <div className="break-words max-sm:col-span-2">
                 <h1 className="font-semibold">Email</h1>
-                <p>{userData.EMAIL_USER}</p>
+                <p>john.doe2023@gmail.com</p>
               </div>
-              <div className="">
+              <div>
                 <h1 className="font-semibold">Telefone</h1>
                 <p>(13) 98104-6971</p>
               </div>
-              <div className="">
+              <div>
                 <h1 className="font-semibold">Cidade</h1>
-                <p>{userData.CIDADE_USER}</p>
+                <p>Santos</p>
               </div>
-              <div className="">
+              <div>
                 <h1 className="font-semibold">Estado</h1>
                 <p>São Paulo</p>
               </div>
             </div>
           </div>
           <h1 className="mt-12 text-3xl font-semibold">Pets cadastrados</h1>
-          <div className="flex gap-6 w-[80rem] overflow-x-scroll bg-gray-200 p-10 rounded-xl mb-24 mt-4">
+          <div className="flex max-w-xl gap-6 p-10 mt-4 mb-24 overflow-x-scroll bg-gray-200 rounded-xl">
             {pets.length < 1 && (
               <span className="text-xl">Nenhum pet cadastrado</span>
             )}
