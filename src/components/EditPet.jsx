@@ -17,6 +17,7 @@ export default function EditPet({ setEditPet, petData, setPetData, idPet }) {
       name: petData.NM_PET,
       raca: petData.RACA,
       porte: petData.PORTE,
+      castrado: petData.CASTRADO,
     },
   });
   const idUser = localStorage.getItem("id_user");

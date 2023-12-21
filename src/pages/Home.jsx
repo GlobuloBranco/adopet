@@ -13,7 +13,7 @@ export default function Home() {
     {
       ID_PET: 1,
       NM_PET: "Luna",
-      RACA: "American Shorthair",
+      RACA: "Shorthair",
       SEXO: "Fêmea",
       PORTE: "Pequeno",
       CASTRADO: "Não",
